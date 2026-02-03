@@ -1,20 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pmh-ops
-  namespace: dev
+  name: pmh-rest
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: pmh-ops
+      app: pmh-rest
   template:
     metadata:
       labels:
-        app: pmh-ops
+        app: pmh-rest
     spec:
       containers:
-        - name: pmh-ops
-          image: nginx:stable
-          ports:
-            - containerPort: 80
+      - name: pmh-rest
+        image: 194273216149.dkr.ecr.us-east-1.amazonaws.com/pmh/registry:1.0.0
+        ports:
+        - containerPort: 8080
